@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="~{fragments/include}"></head>
+
+<body>
+	<nav th:replace="~{fragments/navbar}"></nav>
+
+	<div style="margin-top: 40px; margin-left: 50px">
+
+		<div class="mb-2">
+			<a class="btn btn-outline-primary" th:href="@{/invitations}">
+				<i class="fa-solid fa-arrow-left"></i> <span th:text="#{goBack}"></span>
+			</a>
+		</div>
+
+		<div class="py-4">
+			<h3 th:text="#{header.details}"></h3>
+		</div>
+
+		<div class="py-3">
+			<table>
+				<tbody th:object="${invitation}">
+					<tr>
+						<th th:text="#{details.label.id}"></th>
+						<td th:text="*{id}"></td>
+					</tr>
+					<tr>
+						<th th:text="#{details.label.password}"></th>
+						<td th:text="*{password}"></td>
+					</tr>
+					<tr>
+						<th th:text="#{details.label.description}"></th>
+						<td th:text="*{description}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="mt-3">
+			<a th:href="@{/invitations/edit/{id}(id=${invitation.id})}" th:text="#{edit}"></a>
+		</div>
+	</div>
+</body>
+
+</html>
