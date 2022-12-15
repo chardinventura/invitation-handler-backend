@@ -26,8 +26,15 @@ public class PersonServiceImpl implements PersonService {
 	@Override
 	public List<PersonDTO> getByInvitationId(String id) {
 		return personRepository.findByInvitationId(id)
-		.stream()
-		.map(PersonMapper.INSTANCE::toDTO)
-		.toList();
+				.stream()
+				.map(PersonMapper.INSTANCE::toDTO)
+				.toList();
+	}
+
+	@Override
+	public void create(List<PersonDTO> people) {
+		personRepository.saveAll(people.stream()
+				.map(PersonMapper.INSTANCE::toEntity)
+				.toList());
 	}
 }

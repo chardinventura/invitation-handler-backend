@@ -49,11 +49,14 @@ public class BackendApplication implements CommandLineRunner {
 				PersonDTO.builder()
 						.firstName("Juanna")
 						.lastName("Melano")
-						.build());
+						.build())
+				.stream()
+				.map((person) -> {
+					person.setInvitationId(invitationDTO.getId());
+					return person;
+				})
+				.toList();
 
-		people.forEach((person) -> {
-			person.setInvitationId(invitationDTO.getId());
-			personService.create(person);
-		});
+		personService.create(people);
 	}
 }
