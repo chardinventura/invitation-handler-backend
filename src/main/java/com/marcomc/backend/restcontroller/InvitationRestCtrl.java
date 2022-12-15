@@ -1,8 +1,11 @@
 package com.marcomc.backend.restcontroller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -20,6 +23,11 @@ public class InvitationRestCtrl {
 
 	@Autowired
 	private InvitationService invitationService;
+
+	@GetMapping
+	public List<InvitationDTO> getAll() {
+		return invitationService.getAll();
+	}
 
 	@PostMapping("/validate")
 	public ResponseEntity<Object> validate(@RequestBody InvitationDTO invitationDTO) {
