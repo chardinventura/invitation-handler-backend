@@ -37,4 +37,12 @@ public class PersonServiceImpl implements PersonService {
 				.map(PersonMapper.INSTANCE::toEntity)
 				.toList());
 	}
+
+	@Override
+	public List<PersonDTO> getAll() {
+		return personRepository.findAll()
+		.stream()
+		.map(PersonMapper.INSTANCE::toDTO)
+		.toList();
+	}
 }

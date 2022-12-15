@@ -8,4 +8,5 @@ public interface PersonService {
 	PersonDTO create(PersonDTO personDTO);
 	List<PersonDTO> getByInvitationId(String id);
 	void create(List<PersonDTO> people);
+	List<PersonDTO> getAll();
 }
