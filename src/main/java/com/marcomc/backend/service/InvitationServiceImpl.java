@@ -82,4 +82,9 @@ public class InvitationServiceImpl implements InvitationService {
 				.map(InvitationMapper.INSTANCE::toDTO)
 				.toList();
 	}
+
+	@Override
+	public void delete(String id) {
+		invitationRepository.deleteById(id);
+	}
 }

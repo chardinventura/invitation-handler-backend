@@ -10,4 +10,5 @@ public interface InvitationService {
 	boolean isValid(InvitationDTO invitationDTO) ;
 	void registerAttendance(InvitationDTO invitationDTO);
 	List<InvitationDTO> getAll();
+	void delete(String id);
 }

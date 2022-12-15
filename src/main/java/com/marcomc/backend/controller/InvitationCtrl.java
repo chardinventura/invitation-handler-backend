@@ -15,7 +15,7 @@ import com.marcomc.backend.dto.InvitationDTO;
 import com.marcomc.backend.service.InvitationService;
 
 @Controller
-@RequestMapping("/invitations")
+@RequestMapping({ "/", "/invitations" })
 public class InvitationCtrl {
 
 	@Autowired
@@ -36,7 +36,7 @@ public class InvitationCtrl {
 
 	@GetMapping("/create")
 	public String create(Model model) {
-		final String header = messageSource.getMessage("edit", null, null);
+		final String header = messageSource.getMessage("header.register", null, null);
 		model.addAttribute("header", header);
 		model.addAttribute("action", Action.REGISTER);
 		model.addAttribute("invitation", InvitationDTO.builder()
@@ -51,9 +51,22 @@ public class InvitationCtrl {
 		return "redirect:/invitations";
 	}
 
-	@GetMapping("/details/{id}")
+	@GetMapping("/{id}")
 	public String details(@PathVariable String id, Model model) {
 		model.addAttribute("invitation", invitationService.findById(id));
 		return "invitation/details";
+	}
+
+	@GetMapping("/delete/{id}")
+	public String delete(@PathVariable String id, Model model) {
+		model.addAttribute("invitation", invitationService.findById(id));
+		return "invitation/delete";
+	}
+
+	@PostMapping("/delete/{id}")
+	public String onDelete(@PathVariable String id, Model model) {
+		model.addAttribute("invitation", invitationService.findById(id));
+		invitationService.delete(id);
+		return "redirect:/invitations";
 	}
 }
