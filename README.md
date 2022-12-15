@@ -15,7 +15,7 @@ getByInvitationId -> /invitation/{id}
 
 Base path -> /api/invitations
 
-(Post) validate -> /validate Validar que la identificador y la password sean correctos.
+(Post) validate -> /validate Validar que la identificador sean correcto.
 (Put) registerAttendance -> /register-attendance/{invitationId} Registrar asistencia de las personas.
 
 [Views Endpoints]

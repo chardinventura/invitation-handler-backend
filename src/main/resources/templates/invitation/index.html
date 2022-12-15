@@ -10,7 +10,6 @@
 			<thead>
 				<tr>
 					<th>Identificador</th>
-					<th>Contraseña</th>
 					<th>Descripcion</th>
 					<th>Acciones</th>
 				</tr>
@@ -18,7 +17,6 @@
 			<tbody>
 				<tr th:each="invitation: ${invitations}" th:object="${invitation}">
 					<td th:text="*{id}"></td>
-					<td th:text="*{password}"></td>
 					<td th:text="*{description}"></td>
 					<td>
 						<div class="d-flex gap-1">

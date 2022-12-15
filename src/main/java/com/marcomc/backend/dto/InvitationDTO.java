@@ -18,7 +18,6 @@ public class InvitationDTO {
 	}
 
 	private String id;
-	private String password;
 	private String description;
 	private List<PersonDTO> people;
 }

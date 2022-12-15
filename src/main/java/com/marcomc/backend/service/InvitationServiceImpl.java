@@ -34,10 +34,9 @@ public class InvitationServiceImpl implements InvitationService {
 	}
 
 	@Override
-	public InvitationDTO create(String password, String description) {
+	public InvitationDTO create(String description) {
 		Invitation invitation = Invitation.builder()
 				.id(UUID.randomUUID().toString())
-				.password(password)
 				.description(description)
 				.build();
 
@@ -47,11 +46,7 @@ public class InvitationServiceImpl implements InvitationService {
 
 	@Override
 	public boolean isValid(InvitationDTO invitationDTO) {
-		Optional<Invitation> invitation = invitationRepository.findById(invitationDTO.getId());
-		return invitation.isPresent() &&
-				invitation.get()
-						.getPassword()
-						.equals(invitationDTO.getPassword());
+		return invitationRepository.findById(invitationDTO.getId()).isPresent();
 	}
 
 	@Override

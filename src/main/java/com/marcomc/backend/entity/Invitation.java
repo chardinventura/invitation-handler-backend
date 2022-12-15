@@ -2,7 +2,6 @@ package com.marcomc.backend.entity;
 
 import java.util.List;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
@@ -21,8 +20,6 @@ import lombok.NoArgsConstructor;
 public class Invitation {
 	@Id
 	private String id;
-	@Column(nullable = false)
-	private String password;
 	private String description;
 	@OneToMany(mappedBy = "invitation")
 	private List<Person> people;

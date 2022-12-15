@@ -14,14 +14,6 @@
 				th:action="${action.name() == 'REGISTER'} ? @{/invitations/create} : @{/invitations/update/{id}(id=*{id})}"
 				th:object="${invitation}" method="post" style="width: 800px;">
 				<div class="mb-3 row">
-					<label for="password" th:text="#{input.label.password}" class="col-form-label col-sm-2"></label>
-					<div class="col-sm-10">
-						<input type="text" class="form-control" id="password" th:field="*{password}">
-						<span class="text-danger" th:if="${#fields.hasErrors('password')}"
-							th:errors="*{lastName}"></span>
-					</div>
-				</div>
-				<div class="mb-3 row">
 					<label for="description" th:text="#{input.label.description}"
 						class="col-form-label col-sm-2"></label>
 					<div class="col-sm-10">

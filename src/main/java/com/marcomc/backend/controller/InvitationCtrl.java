@@ -47,7 +47,7 @@ public class InvitationCtrl {
 
 	@PostMapping("/create")
 	public String onCreate(InvitationDTO invitation, Model model) {
-		invitationService.create(invitation.getPassword(), invitation.getDescription());
+		invitationService.create(invitation.getDescription());
 		return "redirect:/invitations";
 	}
 

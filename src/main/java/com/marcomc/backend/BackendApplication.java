@@ -28,7 +28,7 @@ public class BackendApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		InvitationDTO invitationDTO = invitationService.create("12345678", "Familia Test");
+		InvitationDTO invitationDTO = invitationService.create("Familia Test");
 
 		List<PersonDTO> people = Arrays.asList(
 				PersonDTO.builder()
