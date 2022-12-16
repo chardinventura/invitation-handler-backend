@@ -46,15 +46,17 @@
 					<label for="invitationId" th:text="#{input.label.invitationId}"
 						class="col-form-label col-sm-2"></label>
 					<div class="col-sm-10 d-flex align-items-center">
-						<select class="form-select" id="invitationId" th:field="*{invitationId}" >
-							<option
-								th:each="invitation: ${invitations}"
-								th:value="${invitation.id}"
-								th:text="${invitation.description}"
-							></option>
-						</select>
-						<span class="text-danger" th:if="${#fields.hasErrors('invitationId')}"
-							th:errors="*{invitationId}"></span>
+						<div class="flex-grow-1">
+							<select class="form-select" id="invitationId" th:field="*{invitationId}" >
+								<option
+									th:each="invitation: ${invitations}"
+									th:value="${invitation.id}"
+									th:text="${invitation.description}"
+								></option>
+							</select>
+							<span class="text-danger" th:if="${#fields.hasErrors('invitationId')}"
+								th:errors="*{invitationId}"></span>
+						</div>
 					</div>
 				</div>
 

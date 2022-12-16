@@ -9,11 +9,13 @@
 		<table class="table table-striped">
 			<thead>
 				<tr>
-					<th>Identificador</th>
-					<th>Nombre(s)</th>
-					<th>Apellido(s)</th>
-					<th>Asistencia</th>
-					<th>Acciones</th>
+					<th th:text="#{column.id}"></th>
+					<th th:text="#{column.firstName}"></th>
+					<th th:text="#{column.lastName}"></th>
+					<th th:text="#{column.attendance}"></th>
+					<th th:text="#{column.invitationId}"></th>
+					<th th:text="#{column.invitationDescription}"></th>
+					<th th:text="#{column.actions}"></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -22,6 +24,10 @@
 					<td th:text="*{firstName}"></td>
 					<td th:text="*{lastName}"></td>
 					<td th:text="*{attendance}"></td>
+					<td>
+						<a th:href="@{/invitations/{id}(id=*{invitationId})}" th:text="*{invitationId}"></a>
+					</td>
+					<td th:text="${invitations[person.invitationId].description}"></td>
 					<td>
 						<div class="d-flex gap-1">
 							<a class="btn btn-outline-success" th:href="@{/people/{id}(id=*{id})}">
