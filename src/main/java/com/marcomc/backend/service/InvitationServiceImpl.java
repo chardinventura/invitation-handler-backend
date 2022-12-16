@@ -87,4 +87,12 @@ public class InvitationServiceImpl implements InvitationService {
 	public void delete(String id) {
 		invitationRepository.deleteById(id);
 	}
+
+	@Override
+	public void update(String id, InvitationDTO invitationDTO) {
+		Invitation invitation = InvitationMapper.INSTANCE.toEntity(invitationDTO);
+		invitation.setId(id);
+
+		invitationRepository.save(invitation);
+	}
 }

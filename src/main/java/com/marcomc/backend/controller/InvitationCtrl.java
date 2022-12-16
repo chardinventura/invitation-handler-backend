@@ -7,12 +7,14 @@ import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.marcomc.backend.dto.InvitationDTO;
 import com.marcomc.backend.service.InvitationService;
+import com.marcomc.backend.service.PersonService;
 
 @Controller
 @RequestMapping({ "/", "/invitations" })
@@ -22,6 +24,8 @@ public class InvitationCtrl {
 	private MessageSource messageSource;
 	@Autowired
 	private InvitationService invitationService;
+	@Autowired
+	private PersonService personService;
 
 	enum Action {
 		UPDATE,
@@ -35,13 +39,10 @@ public class InvitationCtrl {
 	}
 
 	@GetMapping("/create")
-	public String create(Model model) {
+	public String create(@ModelAttribute("invitation") InvitationDTO invitationDTO, Model model) {
 		final String header = messageSource.getMessage("header.register", null, null);
 		model.addAttribute("header", header);
 		model.addAttribute("action", Action.REGISTER);
-		model.addAttribute("invitation", InvitationDTO.builder()
-				.id(UUID.randomUUID().toString())
-				.build());
 		return "invitation/invitation";
 	}
 
@@ -51,15 +52,32 @@ public class InvitationCtrl {
 		return "redirect:/invitations";
 	}
 
+	@GetMapping("/update/{id}")
+	public String update(@PathVariable String id, Model model) {
+		final String header = messageSource.getMessage("header.edit", null, null);
+		model.addAttribute("header", header);
+		model.addAttribute("action", Action.UPDATE);
+		model.addAttribute("invitation", invitationService.findById(id));
+		return "invitation/invitation";
+	}
+
+	@PostMapping("/update/{id}")
+	public String onUpdate(@PathVariable String id, InvitationDTO invitation, Model model) {
+		invitationService.update(id, invitation);
+		return "redirect:/invitations";
+	}
+
 	@GetMapping("/{id}")
 	public String details(@PathVariable String id, Model model) {
 		model.addAttribute("invitation", invitationService.findById(id));
+		model.addAttribute("people", personService.getByInvitationId(id));
 		return "invitation/details";
 	}
 
 	@GetMapping("/delete/{id}")
 	public String delete(@PathVariable String id, Model model) {
 		model.addAttribute("invitation", invitationService.findById(id));
+		model.addAttribute("people", personService.getByInvitationId(id));
 		return "invitation/delete";
 	}
 

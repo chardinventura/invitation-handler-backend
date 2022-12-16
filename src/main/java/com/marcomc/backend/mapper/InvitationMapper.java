@@ -11,4 +11,5 @@ public interface InvitationMapper {
 	InvitationMapper INSTANCE = Mappers.getMapper(InvitationMapper.class);
 
 	InvitationDTO toDTO(Invitation invitation);
+	Invitation toEntity(InvitationDTO invitationDTO);
 }

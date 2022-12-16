@@ -11,4 +11,5 @@ public interface InvitationService {
 	void registerAttendance(InvitationDTO invitationDTO);
 	List<InvitationDTO> getAll();
 	void delete(String id);
+	void update(String id, InvitationDTO invitation);
 }
