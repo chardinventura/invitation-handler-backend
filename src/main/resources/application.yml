@@ -1,11 +1,4 @@
-server:
-  port: ${PORT:8080}
 spring:
-  jpa:
-    hibernate:
-      ddl-auto: update
-  datasource:
-    driver-class-name: org.postgresql.Driver
-    url: ${JDBC_DATABASE_URL}
-    username: ${JDBC_DATABASE_USERNAME}
-    password: ${JDBC_DATABASE_PASSWORD}
+  profiles:
+    active:
+    - dev
