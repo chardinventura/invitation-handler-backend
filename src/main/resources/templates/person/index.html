@@ -24,12 +24,12 @@
 					<td th:text="*{attendance}"></td>
 					<td>
 						<div class="d-flex gap-1">
-							<a class="btn btn-outline-success" th:href="@{/people/{id}(id=*{id})}"><i
-									class="fa-solid fa-eye"></i></a>
-							<a class="btn btn-outline-primary" th:href="@{/people/edit/{id}(id=*{id})}"><i
-									class="fa-solid fa-pen-to-square"></i></a>
-							<a class="btn btn-outline-danger" th:href="@{/people/delete/{id}(id=*{id})}"><i
-									class="fa-solid fa-trash"></i></a>
+							<a class="btn btn-outline-success" th:href="@{/people/{id}(id=*{id})}">
+								<i class="fa-solid fa-eye"></i></a>
+							<a class="btn btn-outline-primary" th:href="@{/people/update/{id}(id=*{id})}">
+								<i class="fa-solid fa-pen-to-square"></i></a>
+							<a class="btn btn-outline-danger" th:href="@{/people/delete/{id}(id=*{id})}">
+								<i class="fa-solid fa-trash"></i></a>
 						</div>
 					</td>
 				</tr>

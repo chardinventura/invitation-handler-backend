@@ -1,6 +1,7 @@
 package com.marcomc.backend.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,5 +45,23 @@ public class PersonServiceImpl implements PersonService {
 		.stream()
 		.map(PersonMapper.INSTANCE::toDTO)
 		.toList();
+	}
+
+	@Override
+	public Optional<PersonDTO> getById(long id) {
+		return personRepository.findById(id)
+		.map(PersonMapper.INSTANCE::toDTO);
+	}
+
+	@Override
+	public void update(long id, PersonDTO personDTO) {
+		Person person = PersonMapper.INSTANCE.toEntity(personDTO);
+		person.setId(id);
+		personRepository.save(person);
+	}
+
+	@Override
+	public void delete(long id) {
+		personRepository.deleteById(id);
 	}
 }
