@@ -22,6 +22,15 @@
 							th:errors="*{description}"></span>
 					</div>
 				</div>
+				<div class="mb-3 row">
+					<label for="key" th:text="#{input.label.key}"
+						class="col-form-label col-sm-2"></label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="key" th:field="*{key}">
+						<span class="text-danger" th:if="${#fields.hasErrors('key')}"
+							th:errors="*{key}"></span>
+					</div>
+				</div>
 
 				<div class="d-flex justify-content-end">
 					<div class="me-3">

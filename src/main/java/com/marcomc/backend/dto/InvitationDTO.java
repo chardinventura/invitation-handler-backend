@@ -2,6 +2,7 @@ package com.marcomc.backend.dto;
 
 import java.util.List;
 
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,5 +20,7 @@ public class InvitationDTO {
 
 	private String id;
 	private String description;
+	@Pattern(regexp = "[a-zA-Z0-9]{8,}", message = "{validation.key}")
+	private String key;
 	private List<PersonDTO> people;
 }

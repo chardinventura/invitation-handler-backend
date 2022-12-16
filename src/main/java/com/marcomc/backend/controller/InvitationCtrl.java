@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -45,7 +47,13 @@ public class InvitationCtrl {
 	}
 
 	@PostMapping("/create")
-	public String onCreate(InvitationDTO invitation, Model model) {
+	public String onCreate(@Validated @ModelAttribute("invitation") InvitationDTO invitation, BindingResult bindingResult, Model model) {
+		if(bindingResult.hasErrors()) {
+			final String header = messageSource.getMessage("header.register", null, null);
+			model.addAttribute("header", header);
+			model.addAttribute("action", Action.REGISTER);
+			return "invitation/invitation";
+		}
 		invitationService.create(invitation.getDescription());
 		return "redirect:/invitations";
 	}
@@ -60,7 +68,13 @@ public class InvitationCtrl {
 	}
 
 	@PostMapping("/update/{id}")
-	public String onUpdate(@PathVariable String id, InvitationDTO invitation, Model model) {
+	public String onUpdate(@PathVariable String id, @Validated @ModelAttribute("invitation") InvitationDTO invitation, BindingResult bindingResult, Model model) {
+		if(bindingResult.hasErrors()) {
+			final String header = messageSource.getMessage("header.edit", null, null);
+			model.addAttribute("header", header);
+			model.addAttribute("action", Action.UPDATE);
+			return "invitation/invitation";
+		}
 		invitationService.update(id, invitation);
 		return "redirect:/invitations";
 	}
