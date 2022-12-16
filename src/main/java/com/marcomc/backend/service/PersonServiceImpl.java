@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.marcomc.backend.dto.InvitationDTO;
 import com.marcomc.backend.dto.PersonDTO;
 import com.marcomc.backend.entity.Person;
 import com.marcomc.backend.mapper.PersonMapper;
@@ -25,8 +26,15 @@ public class PersonServiceImpl implements PersonService {
 	}
 
 	@Override
-	public List<PersonDTO> getByInvitationId(String id) {
-		return personRepository.findByInvitationId(id)
+	public List<PersonDTO> getByInvitation(InvitationDTO invitationDTO) {
+		return personRepository.findByInvitationIdAndInvitationKey(invitationDTO.getId(), invitationDTO.getKey())
+				.stream()
+				.map(PersonMapper.INSTANCE::toDTO)
+				.toList();
+	}
+	@Override
+	public List<PersonDTO> getByInvitationId(String invitationId) {
+		return personRepository.findByInvitationId(invitationId)
 				.stream()
 				.map(PersonMapper.INSTANCE::toDTO)
 				.toList();

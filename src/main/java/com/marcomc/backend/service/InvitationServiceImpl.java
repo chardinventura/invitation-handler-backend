@@ -45,8 +45,8 @@ public class InvitationServiceImpl implements InvitationService {
 	}
 
 	@Override
-	public boolean isValid(InvitationDTO invitationDTO) {
-		return invitationRepository.findById(invitationDTO.getId()).isPresent();
+	public boolean existsByIdAndKey(String id, InvitationDTO invitationDTO) {
+		return invitationRepository.existsByIdAndKey(id, invitationDTO.getKey());
 	}
 
 	@Override

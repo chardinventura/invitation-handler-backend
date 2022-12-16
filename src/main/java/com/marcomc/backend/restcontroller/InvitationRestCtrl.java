@@ -29,9 +29,9 @@ public class InvitationRestCtrl {
 		return invitationService.getAll();
 	}
 
-	@PostMapping("/validate")
-	public ResponseEntity<Object> validate(@RequestBody InvitationDTO invitationDTO) {
-		return invitationService.isValid(invitationDTO)
+	@PostMapping("/{id}/validate")
+	public ResponseEntity<Object> validate(@PathVariable String id, @RequestBody InvitationDTO invitationDTO) {
+		return invitationService.existsByIdAndKey(id, invitationDTO)
 		? ResponseEntity.ok().build()
 		: ResponseEntity.badRequest().build();
 	}

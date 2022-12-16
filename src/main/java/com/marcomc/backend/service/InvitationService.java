@@ -7,7 +7,7 @@ import com.marcomc.backend.dto.InvitationDTO;
 public interface InvitationService {
 	InvitationDTO create(String description);
 	InvitationDTO findById(String id);
-	boolean isValid(InvitationDTO invitationDTO) ;
+	boolean existsByIdAndKey(String id, InvitationDTO invitationDTO) ;
 	void registerAttendance(InvitationDTO invitationDTO);
 	List<InvitationDTO> getAll();
 	void delete(String id);

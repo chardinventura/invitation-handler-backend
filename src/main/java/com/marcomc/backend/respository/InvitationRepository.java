@@ -7,4 +7,5 @@ import com.marcomc.backend.entity.Invitation;
 
 @Repository
 public interface InvitationRepository extends JpaRepository<Invitation, String>  {
+	boolean existsByIdAndKey(String id, String key);
 }
