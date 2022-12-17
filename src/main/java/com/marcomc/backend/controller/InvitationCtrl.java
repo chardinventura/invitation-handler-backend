@@ -54,7 +54,7 @@ public class InvitationCtrl {
 			model.addAttribute("action", Action.REGISTER);
 			return "invitation/invitation";
 		}
-		invitationService.create(invitation.getDescription());
+		invitationService.create(invitation);
 		return "redirect:/invitations";
 	}
 

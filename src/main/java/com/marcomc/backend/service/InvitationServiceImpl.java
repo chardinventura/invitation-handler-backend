@@ -34,11 +34,8 @@ public class InvitationServiceImpl implements InvitationService {
 	}
 
 	@Override
-	public InvitationDTO create(String description) {
-		Invitation invitation = Invitation.builder()
-				.id(UUID.randomUUID().toString())
-				.description(description)
-				.build();
+	public InvitationDTO create(InvitationDTO invitationDTO) {
+		Invitation invitation = InvitationMapper.INSTANCE.toEntity(invitationDTO);
 
 		invitation = invitationRepository.save(invitation);
 		return InvitationMapper.INSTANCE.toDTO(invitation);

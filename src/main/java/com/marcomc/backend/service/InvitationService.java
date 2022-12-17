@@ -5,7 +5,7 @@ import java.util.List;
 import com.marcomc.backend.dto.InvitationDTO;
 
 public interface InvitationService {
-	InvitationDTO create(String description);
+	InvitationDTO create(InvitationDTO invitation);
 	InvitationDTO findById(String id);
 	boolean existsByIdAndKey(String id, InvitationDTO invitationDTO) ;
 	void registerAttendance(InvitationDTO invitationDTO);
