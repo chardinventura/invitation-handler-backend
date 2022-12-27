@@ -13,10 +13,6 @@
 			<table>
 				<tbody th:object="${person}">
 					<tr>
-						<th th:text="#{details.label.id}"></th>
-						<td th:text="*{id}"></td>
-					</tr>
-					<tr>
 						<th th:text="#{details.label.firstName}"></th>
 						<td th:text="*{firstName}"></td>
 					</tr>
@@ -26,10 +22,6 @@
 					</tr>
 					<tr>
 						<th colspan="2" th:text="'->' + #{details.label.invitation} + '<-'"></th>
-					</tr>
-					<tr>
-						<th th:text="#{details.label.id}"></th>
-						<td th:text="*{invitationId}"></td>
 					</tr>
 					<tr>
 						<th th:text="#{details.label.description}"></th>

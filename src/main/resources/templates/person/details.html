@@ -22,10 +22,6 @@
 			<table>
 				<tbody th:object="${person}">
 					<tr>
-						<th th:text="#{details.label.id}"></th>
-						<td th:text="*{id}"></td>
-					</tr>
-					<tr>
 						<th th:text="#{details.label.firstName}"></th>
 						<td th:text="*{firstName}"></td>
 					</tr>
@@ -37,14 +33,10 @@
 						<th colspan="2" th:text="'->' + #{details.label.invitation} + '<-'"></th>
 					</tr>
 					<tr>
-						<th th:text="#{details.label.id}"></th>
-						<td>
-							<a th:href="@{/invitations/{id}(id=*{invitationId})}" th:text="*{invitationId}"></a>
-						</td>
-					</tr>
-					<tr>
 						<th th:text="#{details.label.description}"></th>
-						<td th:text="${invitation.description}"></td>
+						<td>
+							<a th:href="@{/invitations/{id}(id=*{invitationId})}" th:text="${invitation.description}"></a>
+						</td>
 					</tr>
 				</tbody>
 			</table>

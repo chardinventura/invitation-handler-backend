@@ -9,7 +9,6 @@
 		<table class="table table-striped">
 			<thead>
 				<tr>
-					<th th:text="#{column.id}"></th>
 					<th th:text="#{column.description}"></th>
 					<th th:text="#{column.key}"></th>
 					<th th:text="#{column.actions}"></th>
@@ -17,7 +16,6 @@
 			</thead>
 			<tbody>
 				<tr th:each="invitation: ${invitations}" th:object="${invitation}">
-					<td th:text="*{id}"></td>
 					<td th:text="*{description}"></td>
 					<td th:text="*{key}"></td>
 					<td>

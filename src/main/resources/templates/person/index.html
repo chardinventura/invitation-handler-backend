@@ -12,7 +12,6 @@
 					<th th:text="#{column.firstName}"></th>
 					<th th:text="#{column.lastName}"></th>
 					<th th:text="#{column.attendance}"></th>
-					<th th:text="#{column.invitationId}"></th>
 					<th th:text="#{column.invitationDescription}"></th>
 					<th th:text="#{column.actions}"></th>
 				</tr>
@@ -23,9 +22,6 @@
 					<td th:text="*{lastName}"></td>
 					<td>
 						<i th:class="'fa-solid fa-xl fa-circle-' + ${person.attendance ? 'check text-success' : 'xmark text-danger'}"></i>
-					</td>
-					<td>
-						<a th:href="@{/invitations/{id}(id=*{invitationId})}" th:text="*{invitationId}"></a>
 					</td>
 					<td th:text="${invitations[person.invitationId].description}"></td>
 					<td>
