@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.marcomc.backend.dto.InvitationDTO;
@@ -49,7 +51,7 @@ public class PersonServiceImpl implements PersonService {
 
 	@Override
 	public List<PersonDTO> getAll() {
-		return personRepository.findAll()
+		return personRepository.findAll(sortByInvitationDescriptionAsc())
 		.stream()
 		.map(PersonMapper.INSTANCE::toDTO)
 		.toList();
@@ -71,5 +73,9 @@ public class PersonServiceImpl implements PersonService {
 	@Override
 	public void delete(long id) {
 		personRepository.deleteById(id);
+	}
+
+	private Sort sortByInvitationDescriptionAsc() {
+		return Sort.by(Direction.ASC, "invitation.description");
 	}
 }
