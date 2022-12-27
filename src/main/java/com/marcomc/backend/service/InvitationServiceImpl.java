@@ -8,6 +8,8 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.marcomc.backend.dto.InvitationDTO;
@@ -74,7 +76,7 @@ public class InvitationServiceImpl implements InvitationService {
 
 	@Override
 	public List<InvitationDTO> getAll() {
-		return invitationRepository.findAll()
+		return invitationRepository.findAll(sortByDescriptionAsc())
 				.stream()
 				.map(InvitationMapper.INSTANCE::toDTO)
 				.toList();
@@ -91,5 +93,9 @@ public class InvitationServiceImpl implements InvitationService {
 		invitation.setId(id);
 
 		invitationRepository.save(invitation);
+	}
+
+	private Sort sortByDescriptionAsc() {
+		return Sort.by(Direction.ASC, "description");
 	}
 }
