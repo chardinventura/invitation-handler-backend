@@ -9,7 +9,6 @@
 		<table class="table table-striped">
 			<thead>
 				<tr>
-					<th th:text="#{column.id}"></th>
 					<th th:text="#{column.firstName}"></th>
 					<th th:text="#{column.lastName}"></th>
 					<th th:text="#{column.attendance}"></th>
@@ -20,10 +19,11 @@
 			</thead>
 			<tbody>
 				<tr th:each="person: ${people}" th:object="${person}">
-					<td th:text="*{id}"></td>
 					<td th:text="*{firstName}"></td>
 					<td th:text="*{lastName}"></td>
-					<td th:text="*{attendance}"></td>
+					<td>
+						<i th:class="'fa-solid fa-xl fa-circle-' + ${person.attendance ? 'check text-success' : 'xmark text-danger'}"></i>
+					</td>
 					<td>
 						<a th:href="@{/invitations/{id}(id=*{invitationId})}" th:text="*{invitationId}"></a>
 					</td>
