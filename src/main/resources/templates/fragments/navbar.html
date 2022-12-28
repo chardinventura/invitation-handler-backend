@@ -1,19 +1,14 @@
-<nav class="navbar navbar-expand-lg bg-light">
+<nav class="navbar navbar-expand bg-light">
 	<div class="container-fluid">
-		<a class="navbar-brand" th:text="#{navbar.home}" th:href="@{/}">Home</a>
-		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-			aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-				<li class="nav-item">
-					<a class="nav-link active" aria-current="page" th:text="#{navbar.invitations}" th:href="@{/invitations}">Invitaciones</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link active" aria-current="page" th:text="#{navbar.people}" th:href="@{/people}">Personas</a>
-				</li>
-			</ul>
-		</div>
+		<a class="navbar-brand" th:text="#{navbar.home}" th:href="@{/invitations}">Inicio</a>
+		<ul class="navbar-nav me-auto">
+			<li class="nav-item">
+				<a class="nav-link active" aria-current="page" th:text="#{navbar.invitations}" th:href="@{/invitations}">Invitaciones</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link active" aria-current="page" th:text="#{navbar.people}" th:href="@{/people}">Personas</a>
+			</li>
+		</ul>
+		<a class="btn" th:href="@{/logout}" th:text="#{logout}">Cerrar sesión</a>
 	</div>
 </nav>

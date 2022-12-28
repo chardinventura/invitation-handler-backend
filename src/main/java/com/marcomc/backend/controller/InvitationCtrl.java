@@ -17,7 +17,7 @@ import com.marcomc.backend.service.InvitationService;
 import com.marcomc.backend.service.PersonService;
 
 @Controller
-@RequestMapping({ "/", "/invitations" })
+@RequestMapping("/invitations")
 public class InvitationCtrl {
 
 	@Autowired
