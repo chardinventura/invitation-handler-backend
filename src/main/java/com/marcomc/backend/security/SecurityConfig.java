@@ -14,6 +14,8 @@ public class SecurityConfig {
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
 		return httpSecurity
+		.cors()
+		.and()
 		.csrf().disable()
 		.authorizeHttpRequests()
 		.requestMatchers(HttpMethod.POST, "/api/people/invitation")
