@@ -21,8 +21,6 @@ import com.marcomc.backend.dto.PersonDTO;
 import com.marcomc.backend.service.InvitationService;
 import com.marcomc.backend.service.PersonService;
 
-import jakarta.validation.Valid;
-
 @Controller
 @RequestMapping("/people" )
 public class PersonCtrl {
