@@ -9,3 +9,7 @@ spring:
     url: jdbc:postgresql://localhost:5432/invitation_handler
     username: postgres
     password: ch12345
+  security:
+    user:
+      name: test
+      password: testtest
